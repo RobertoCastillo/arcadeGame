@@ -5,7 +5,7 @@ var Enemy = function(x,y) {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/char-boy.png';
+    this.sprite = 'images/enemy-bug.png';	
 	this.x = x;
 	this.y = y;
 }
@@ -34,7 +34,7 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 
 var Player = function (x,y) {
-	this.sprite = 'images/enemy-bug.png';
+	this.sprite = 'images/char-boy.png';
 	this.x = x;
 	this.y = y;
 }
@@ -44,7 +44,7 @@ Player.prototype.update = function() {
 		player.reset();
 	}
 }
-	
+
 Player.prototype.render = function() {
 	ctx.drawImage (Resources.get(this.sprite), this.x, this.y);
 }
@@ -59,13 +59,13 @@ Player.prototype.handleInput = function(direction) {
 	if(direction == 'up' && this.y > 50) {
 		this.y -= 100;
 	}
-	if(direction == 'down' && this.y < 450) {
+	if(direction == 'down' && this.y < 400) {
 		this.y += 100;
 	}
 }
 
 Player.prototype.reset = function() {
-	this.y = 450;
+	this.y = 400;
 }
 
 
@@ -79,8 +79,15 @@ var enemy3 = new Enemy (-300, 150);
 var enemy4 = new Enemy (-400, 200);
 var allEnemies = [enemy1, enemy2, enemy3, enemy4];
 
-var player = new Player (150, 450);
+var player = new Player (200, 400);
 
+var checkCollisions = function() {
+	allEnemies.forEach(function(enemy) {
+	if(enemy.x < player.x + 30 && enemy.x + 30 > player.x && enemy.y < player.y + 30 && enemy.y + 30 > player.y) {
+		player.reset();
+	}
+	});
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
