@@ -40,7 +40,7 @@ var Player = function (x,y) {
 }
 
 Player.prototype.update = function() {
-	if(this.y < 51) {
+	if(this.y < 50) {
 		player.reset();
 	}
 }
@@ -73,7 +73,7 @@ Player.prototype.reset = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy (-100, 65);
+var enemy1 = new Enemy (-100, 75);
 var enemy2 = new Enemy (-200, 225);
 var enemy3 = new Enemy (-300, 150);
 var enemy4 = new Enemy (-400, 200);
@@ -83,7 +83,10 @@ var player = new Player (200, 400);
 
 var checkCollisions = function() {
 	allEnemies.forEach(function(enemy) {
-	if(enemy.x < player.x + 30 && enemy.x + 30 > player.x && enemy.y < player.y + 30 && enemy.y + 30 > player.y) {
+	if(enemy.x < player.x + 30 && 
+	   enemy.x + 60 > player.x && 
+	   enemy.y < player.y + 60 && 
+	   enemy.y + 40 > player.y) {
 		player.reset();
 	}
 	});
