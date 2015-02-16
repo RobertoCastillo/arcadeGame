@@ -38,7 +38,7 @@ var Player = function (x,y) {
 	this.x = x;
 	this.y = y;
 }
-
+// Player reset once they reach water
 Player.prototype.update = function() {
 	if(this.y < 50) {
 		player.reset();
@@ -49,6 +49,7 @@ Player.prototype.render = function() {
 	ctx.drawImage (Resources.get(this.sprite), this.x, this.y);
 }
 
+//Direction set to ensure player stays within board
 Player.prototype.handleInput = function(direction) {
 	if(direction == 'left' && this.x > 0) {
 		this.x -= 100;
@@ -64,6 +65,7 @@ Player.prototype.handleInput = function(direction) {
 	}
 }
 
+//Reset function to bring player back to starting Y coordinate
 Player.prototype.reset = function() {
 	this.y = 400;
 }
@@ -81,12 +83,10 @@ var allEnemies = [enemy1, enemy2, enemy3, enemy4];
 
 var player = new Player (200, 400);
 
+//Collision function to reset player back to starting Y coordinate 
 var checkCollisions = function() {
 	allEnemies.forEach(function(enemy) {
-	if(enemy.x < player.x + 30 && 
-	   enemy.x + 60 > player.x && 
-	   enemy.y < player.y + 60 && 
-	   enemy.y + 40 > player.y) {
+	if(enemy.x < player.x + 30 && enemy.x + 60 > player.x && enemy.y < player.y + 60 && enemy.y + 40 > player.y) {
 		player.reset();
 	}
 	});
