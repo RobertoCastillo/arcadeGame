@@ -73,7 +73,8 @@ Player.prototype.reset = function() {
 var enemy1 = new Enemy (-100, 65);
 var enemy2 = new Enemy (-200, 225);
 var enemy3 = new Enemy (-300, 150);
-var allEnemies = [enemy1, enemy2, enemy3];
+var enemy4 = new Enemy (-400, 200);
+var allEnemies = [enemy1, enemy2, enemy3, enemy4];
 
 var player = new Player (150, 450);
 
