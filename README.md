@@ -1,6 +1,5 @@
-frontend-nanodegree-arcade-game
-===============================
+Game Rules
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
-
-for self-checking their submission.
+1.	Open index.html file
+2.	Use 'up', 'down', 'left' or 'right' to move the player
+3.	Avoid all bugs and water otherwise you will have to start from the beginning position again
